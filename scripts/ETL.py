@@ -52,6 +52,7 @@ df1 = stuck_week(df_column_labels(file1))
 df2 = stuck_week(df_column_labels(file2))
 
 df = pd.concat([df1, df2])
+df = df.drop_duplicates()
 
 df.columns = [c.replace(" ", "_") for c in list(df.columns)]
 df.columns = [c.replace("(", "") for c in list(df.columns)]
