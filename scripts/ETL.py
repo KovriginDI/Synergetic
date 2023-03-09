@@ -31,7 +31,7 @@ def df_column_labels(df):
                        'Unnamed: 9_level_0_Наименование sku':'sku_nm'})
     return df
 
-def stuck_week(df):
+def stack_week(df):
     df = df.fillna(0)
     df = df[[col for col in df.columns if 'Total' not in col]]
     dim_list = [col for col in df.columns if 'CW' not in col]
@@ -48,8 +48,8 @@ def stuck_week(df):
         out_df = pd.concat([out_df, data])
     return out_df
 
-df1 = stuck_week(df_column_labels(file1))
-df2 = stuck_week(df_column_labels(file2))
+df1 = stack_week(df_column_labels(file1))
+df2 = stack_week(df_column_labels(file2))
 
 df = pd.concat([df1, df2])
 df = df.drop_duplicates()
